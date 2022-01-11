@@ -1,0 +1,91 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block js %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/effects.js' %}"></script>
+    <script src="{% static 'js/jquery.qtip-1.0.0-rc3.min.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<div id="latestpizza" class="hero pad">
+    <div class="container">
+        <!-- hero content -->
+        <div class="menu-content ">
+            <!-- heading -->
+            <h2>WELCOME TO PIZZALAND</h2>
+            <hr>
+        </div>
+
+        <!-- hero play list -->
+        <div class="menu-list">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <!-- music album image -->
+                    <div class="figure">
+                        <!-- image -->
+                        <a href = "/proyecto/pizzas"><img class="img-responsive"  src="{% static 'img/logos/pizza.jpg'%}" alt="" width="250"/></a>
+                    </div>
+                    <!-- album details -->
+                    <div class="pizza-details">
+                        <!-- title -->
+                        <h4><strong><a style="color: black;" href="/proyecto/pizzas">PIZZAS</a></strong></h4>
+                        <!-- te lleva a las pizzas -->
+                        <p>{% trans "The finest pizzas" %}</p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <!-- music album image -->
+                    <div class="figure">
+                        <!-- image -->
+                        <a href = "/proyecto/ingredientes"><img class="img-responsive" src="{% static 'img/logos/ingredients.jpg'%}" alt="" width="250"/></a>
+                    </div>
+                    <!-- album details -->
+                    <div class="pizza-details">
+                        <!-- title -->
+                        <h4><strong><a style="color: black;" href="/proyecto/ingredientes">INGREDIENTS</a></strong></h4>
+                        <!-- te lleva a las pizzas -->
+                        <p>{% trans "The best ingredientes on the market" %}</p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <!-- music album image -->
+                    <div class="figure">
+                        <!-- image -->
+                        <a href = "/proyecto/comentarios"><img class="img-responsive" src="{% static 'img/logos/review.jpg'%}" alt="" width="250"/></a>
+                    </div>
+                    <!-- album details -->
+                    <div class="pizza-details">
+                        <!-- title -->
+                        <h4><strong><a style="color: black;" href="/proyecto/comentarios">REVIEWS</a></strong></h4>
+                        <!-- te lleva a las pizzas -->
+                        <p>{% trans "Read all the reviews our users have written" %}</p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <!-- music album image -->
+                    <div class="figure">
+                        <!-- image -->
+                        <a href = "/proyecto/contacto"><img class="img-responsive" src="{% static 'img/logos/contact.jpg'%}" alt="" width="250"/></a>
+                    </div>
+                    <!-- album details -->
+                    <div class="pizza-details">
+                        <!-- title -->
+                        <h4><strong><a style="color: black;" href="/proyecto/contacto">CONTACT US</a></strong></h4>
+                        <!-- te lleva a las pizzas -->
+                        <p>{% trans "If you have any doubts or any suggestions please feel free to share them with us" %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

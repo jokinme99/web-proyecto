@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block contenido %}
+
+<div class="contact pad" id="contact">
+    <div class="container">
+        <!-- default heading -->
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>{% trans "CONTACT US" %}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <!-- contact item -->
+                <div class="contact-item ">
+                    <!-- big icon -->
+                    <i class="fa fa-street-view"></i>
+                    <!-- contact details  -->
+                    <span class="contact-details">Unibertsitate Etorb., 24, 48007 Bilbo, Bizkaia</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <!-- contact item -->
+                <div class="contact-item ">
+                    <!-- big icon -->
+                    <i class="fa fa-wifi"></i>
+                    <!-- contact details  -->
+                    <span class="contact-details">alud.deusto@opendeusto.es</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <!-- contact item -->
+                <div class="contact-item ">
+                    <!-- big icon -->
+                    <i class="fa fa-phone"></i>
+                    <!-- contact details  -->
+                    <span class="contact-details">944812597</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

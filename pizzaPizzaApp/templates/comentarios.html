@@ -1,0 +1,79 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block js %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/effects.js' %}"></script>
+    <script src="{% static 'js/jquery.qtip-1.0.0-rc3.min.js' %}"></script>
+    <script src="{% static 'js/ajax.js' %}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<div id="latestalbum" class="hero pad">
+    <div class="container">
+        <!-- hero content -->
+        <div class="hero-content ">
+            <!-- heading -->
+            <h2>Review</h2>
+            <hr>
+            <!-- paragraph -->
+            <p>{% trans "Here you will find all the reviews" %}</p>
+            <div class= "make-commentary">
+                <h4><strong><a href="/proyecto/comentario"> Make a review</a></strong></h4>   
+            </div>
+        </div>
+
+        <!-- hero play list -->
+        <div class="hero-playlist">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <!-- music album image -->
+                    <div class="figure">
+                        <!-- image -->
+                        <img class="img-responsive" src="{% static 'img/logos/reviewIcon.png'%}" alt="" width="800"/>
+                    </div>
+                </div>
+             <div class="col-md-6 col-sm-6">
+                <div class="revies">
+                 <h1 class="content-subhead">{% trans "Review list" %}</h1>
+                 {% if comentarios %}
+                    {% for c in comentarios %}
+                        {%if pizzas%}
+                          {%for pizza in pizzas%}
+                            {%if pizza.id == c.pizzaModel.pizzaModel_id%}
+                            <section class="review">
+                                <header class="review-header">
+                                    <h4 class="review-title">|<a href="/proyecto/pizzas/{{pizza.id}}" style= "color:black">{{pizza.title}}</a></h4>
+                                </header>
+                                <div class="review-description">
+                                    <strong style="color:blue">{% trans "Creator" %}</strong>: <i style= "color:black">{{c.email}}</i> &nbsp;|&nbsp; 
+                                    <strong style="color: blue;">{% trans "Points" %}</strong>: <strong style="color: black;">{{c.valoracion}}</strong>&nbsp;|&nbsp;
+                                    <p><strong style="color: blue;">{% trans "Description" %}</strong>:<i style="color: black;">{{c.descripcion}}</i></p> 
+                                    <img class="img-responsive" src="{{pizza.image}}" alt="" width="80"/>
+                                </div>
+                            </section>
+                            {%else%}
+                            {%endif%}
+                          {%endfor%}
+                        {%else%}
+                         <p>No pizzas</p>
+                        {%endif%}
+                    {% endfor %}
+                 {%else%}
+                    <section class="song">
+                        <header class="song-header">
+                            <h2 class="song-title">No reviews made yet.</h2>
+                        </header>
+                    </section>
+                 {%endif%}
+                </div>
+			 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block contenido %}
+{% if ingrediente %}
+{% if nutrition %}
+
+<!-- Hero block area -->
+<div id="allingredients" class="hero pad">
+	<div class="container">
+		<!-- hero content -->
+		<div class="hero-content ">
+			<!-- heading -->
+			<h2>{{ingrediente.name}}</h2>
+			<hr>
+		</div>
+		<!-- hero play list -->
+		<div class="hero-playlist">
+			<div class="row">
+                <!--izquierda-->
+				<div class="col-md-6 col-sm-6">
+					<!-- music album image -->
+					<div class="figure">
+						<!-- image -->
+                         <img class="img-responsive" src="{%static 'img/logos/ingredients.jpg'%}" alt=""  width="600"/>
+					</div>
+					<div class="pizza-details">
+						<!-- title -->
+						<h4><span style="text-transform: uppercase;">{{ingrediente.name}}</span></h4>
+						<!-- composed by -->
+						<h5><strong><a style="color: blue">Category: </a></h5>
+						<!-- paragraph -->
+                        {%for c in ingrediente.categoryPath%}
+							{%if c%}
+								<p>&nbsp;&nbsp;&nbsp;<i>{{c}}</i></p> <!--fix-->
+							{%else%}	
+								<p>This product has no categories.</p>
+							{%endif%}
+                        {%endfor%}
+						
+					</div>
+				</div>
+                <!--derecha-->
+				<div class="col-md-6 col-sm-6">
+					<!-- play list -->
+					<div class="nutrients-content">
+					 {% if nutrition %}
+					  <ul class="list-unstyled">
+                             <li class="nutrients-list">
+                                <h4><u><a style="color: black">NUTRIENTS</a></u></h4>
+                                <div class="nutrients-info"></div>
+							        {%for n in nutrition.nutrients%} <!--fix!-->
+                                        {%if n%}
+                                         <div class="nutrients-block">
+                                             <h4 style="color: black;"><strong>{{n.title}}</strong><i style="color: black;">(Amount:</i><i style="color: gray; font-size: 0.4cm;"> {{n.amount}}</i><i>)</i></h4>
+                                         </div>
+                                        {%else%}
+                                            <p>No nutrients</p>
+                                        {%endif%}
+							        {% endfor %}
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+						</ul>
+					 {% else %}
+                        <p>No nutrients</p>
+					 {% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}

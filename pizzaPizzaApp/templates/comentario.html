@@ -1,0 +1,51 @@
+ {% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block contenido %}
+
+<div class="contact pad" id="contact">
+    <div class="container">
+        <!-- default heading -->
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>{% trans "MAKE A REVIEW" %}</h2>
+        </div>
+        <div class="form-content">
+            <p><i style="color: black;">Write your review</i></p>
+            <form role="form" method="post", id ="reviewForm">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                         <form>
+                            {% csrf_token %}
+                            <div class="col-md-6 col-sm-6">
+                                <!--email, pizza, valoracion-->
+                                <div class="form-group">
+                                    <label for = "pizzaModel">Pizza: </label>
+                                    {{form.pizzaModel}}
+                                </div>
+                                <div class="form-group">
+                                    <label for = "email">Email: </label>
+                                    {{form.email}}
+                                </div>
+                                <div class="form-group">
+                                    <label for="valoracion">Points: </label>
+                                    {{form.valoracion}}
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label for="descripcion">Review: </label>
+                                    {{form.descripcion}}
+                                </div>
+                                <button type="submit" class="save btn btn-default">Upload review</button>
+                            </div>
+                         </form>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
