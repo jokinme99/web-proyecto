@@ -1,12 +1,11 @@
 from io import StringIO
 from typing import List
 from django.conf.urls import url
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, get_list_or_404
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from django.utils import timezone
+from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm #add this
 import requests
 from requests.api import get
 from .forms import *
@@ -63,14 +62,6 @@ def getList(comentariosList: List[Comentario], pizza_id: int) -> List[Comentario
 			comentarios.append(e)
 	return comentarios
 
-#API: https://api.spoonacular.com/food/ingredients/search?query={nameIngredient}&apiKey=89b02dca211e450e8c3bc9361f7bbb6e (SET INGREDIENT NAME)
-#def ingrediente(request, ingrediente_nombre):
-	#data = requests.get(url = "https://api.spoonacular.com/food/ingredients/search?query=" + ingrediente_nombre + "&apiKey=89b02dca211e450e8c3bc9361f7bbb6e")
-	#variable = data.json()
-	#ingredientes = variable["results"]
-	#context = {"ingredientes": ingredientes}
-	#return render(request, "ingredientes.html", context)
-
 def detailIngrediente(request, ingrediente_id):
 	data = requests.get(url = "https://api.spoonacular.com/food/ingredients/" + str(ingrediente_id) + "/information?amount=1&apiKey=89b02dca211e450e8c3bc9361f7bbb6e")
 	variable = data.json()
@@ -94,8 +85,7 @@ def comentarios(request):
  context = {'comentarios': comentarios, 'pizzas': pizzas}
  return render(request, 'comentarios.html', context)
 
-
-def comentario(request):
+def comentario(request):#change email to username
  if request.method == "POST":
      form = MyReview(request.POST)
      if form.is_valid():
@@ -107,3 +97,39 @@ def comentario(request):
  else:
      form = MyReview()
  return render(request, 'comentario.html', {'form': form})
+
+def loginORegistro(request):
+    return render(request, 'loginORegistro.html')
+
+def registro(request):
+	if request.method == "POST":
+		form = RegisterUser(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			messages.success(request, "Registration successful." )
+			return redirect('home')
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = RegisterUser()
+	return render(request, 'registro.html', {'form':form})
+
+def loginUser(request):
+	if request.method == "POST":
+		form = AuthenticationForm(request, data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request, user)
+				messages.info(request, f"You are now logged in as {username}.")
+				return redirect('home')
+			else:
+				messages.error(request,"Invalid username or password.")
+		else:
+			messages.error(request,"Invalid username or password.")
+	form = AuthenticationForm()
+	return render(request, 'login.html', {'form':form})
+
+def myAccount(request):
+    return render(request, 'myAccount.html')

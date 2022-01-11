@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block contenido %}
+
+<div class="contact pad" id="contact">
+    <div class="container">
+        <!-- default heading -->
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>{% trans "REGISTER" %}</h2>
+        </div>
+        <div class="content">
+            <form role="form" method="post", id ="registerForm">
+                 <form>
+                     {% csrf_token %}
+                     <div class="form-group">
+                         <label for="username">Enter your username: </label>
+                         {{form.username}}
+                     </div>
+                     <div class="form-group">
+                        <label for="password">Enter your password: </label>
+                        {{form.password}}
+                     </div>
+                     <button type="submit" class="save btn btn-default">Sign Up</button><br>
+                     <p>Don't have an account? <a href="/proyecto/registro">Create an account</a> instead.</p>
+                 </form>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

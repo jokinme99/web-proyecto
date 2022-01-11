@@ -106,6 +106,13 @@
 								<!-- <li><a href="/proyecto/ingredientes">{% trans "Ingredients" %}</a></li> -->
 								<li><a href="/proyecto/comentarios">{% trans "Reviews" %}</a></li>
 								<li><a href="/proyecto/contacto">{% trans "Contact us" %}</a></li>
+								{% if user.is_authenticated%}
+									<li><a href="/proyecto/myAccount">Welcome back, {{user.username}}</a></li>
+									<!--alert appears if you are sure it will take to home and logout-->>
+								{%else%}
+									<li><a href="/proyecto/loginORegistro">{% trans "Identify" %}</a></li>
+								{%endif%}
+									
 							</ul>
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->

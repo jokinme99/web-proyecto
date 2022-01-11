@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block contenido %}
+
+<div class="identification pad" id="identification">
+    <div class="container">
+        <!-- default heading -->
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>{% trans "IDENTIFY YOURSELF" %}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3"></div>
+            <div class="col-md-3 col-sm-3">
+                <!-- contact item -->
+                <div class="contact-item ">
+                    <!-- big icon -->
+                    <a href = "/proyecto/registro"><img class="img-responsive"  src="{% static 'img/logos/registro.png'%}" alt="" width="200"/></a>
+                    <!-- contact details  -->
+                    <span class="register-details">REGISTER</a></span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <!-- contact item -->
+                <div class="contact-item ">
+                    <!-- big icon -->
+                    <a href = "/proyecto/login"><img class="img-responsive"  src="{% static 'img/logos/login.jpg'%}" alt="" width="230"/></a>
+                    <!-- contact details  -->
+                    <span class="login-details">LOGIN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
