@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 {% load static %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>PIZZA-PIZZA</title>
 		<!-- Description, Keywords and Author -->
-		<meta name="description" content="Your description">
-		<meta name="keywords" content="Your,Keywords">
-		<meta name="author" content="HimanshuGupta">
+		<meta name="description" content="Web page that provides pizza receipts">
+		<meta name="keywords" content="PZ">
+		<meta name="author" content="Jokin EGia Martin">
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
@@ -25,10 +24,7 @@
 		<!-- Custom CSS -->
 		<link href="{% static 'css/style.css'%}" rel="stylesheet">
 		<link href="{% static 'css/style-color.css'%}" rel="stylesheet">
-		
-		{% block js %}{% endblock %}
 
-		<!-- Favicon -->
 		<link rel="shortcut icon" href="{% static 'img/logos/proyect.ico'%}">
 	</head>
 	
@@ -46,36 +42,6 @@
 						<div class="sm-left">
 							<strong></strong>&nbsp; <a href="#"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 							<strong>Jokin Egia Martin </strong>&nbsp; 
-						</div>
-						<!-- secondary menu right link area -->
-						<div class="sm-right">
-							<!-- social link -->
-							<div class="sm-social-link">
-								<!--<a class="h-facebook" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-								<a class="h-twitter" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
-								<a class="h-google" href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
-								<a class="h-linkedin" href="https://es.linkedin.com/"><i class="fa fa-linkedin"></i></a>-->
-								<form action="{% url 'set_language' %}" method="post">
-									{% csrf_token %}
-									<select name="language" style="color: black;">
-										{% get_current_language as LANGUAGE_CODE %}
-										{% get_available_languages as LANGUAGES %}
-										{% get_language_info_list for LANGUAGES as languages %}
-										{% for language in languages %}
-											<option style="color:black;text-align:center;" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>  {#8#}
-												{{ language.name_local }} ({{ language.code }})
-											</option>
-										{% endfor %}
-									</select>
-									<input style="color:black;text-align:center;" type="submit" value="Switch">
-								</form>
-
-								<!--
-								<a class="español" href="{% url 'set_language' %}" value="es"{% if es == LANGUAGE_CODE %} selected{% endif %}><img class="español" src="{% static 'img/inter/spain.png'%}" alt="" width="20"/></a>
-								<a class="ingles" href="{% url 'set_language' %}" value="en"{% if en == LANGUAGE_CODE %} selected{% endif %}><img class="ingles" src="{% static 'img/inter/ingles.png'%}" alt=""  width="20"/></a>
-								<a class="frances" href="{% url 'set_language' %}" value="fr"{% if fr == LANGUAGE_CODE %} selected{% endif %}><img class="frances" src="{% static 'img/inter/frances.png'%}" alt=""  width="20" /></a>
-								-->
-							</div>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -131,7 +97,7 @@
 								<!-- banner caption -->
 								<div class="carousel-caption slide-one">
 									<!-- heading -->
-									<h2 class="animated fadeInLeftBig"><i class="fa fa-music"></i>{% trans "Pizzas" %}</h2>
+									<h2 class="animated fadeInLeftBig"><i class="fas fa-pizza-slice"></i>{% trans "Pizzas" %}</h2>
 									<!-- paragraph -->
 									<h3 class="animated fadeInRightBig">{% trans "Discover the best pizzas" %}</h3>
 									<!-- button -->
@@ -145,7 +111,7 @@
 								<!-- banner caption -->
 								<div class="carousel-caption slide-two">
 									<!-- heading -->
-									<h2 class="animated fadeInLeftBig"><i class="fa fa-headphones"></i>{% trans "Reviews" %}</h2>
+									<h2 class="animated fadeInLeftBig"><i class="fas fa-"></i>{% trans "Reviews" %}</h2>
 									<!-- paragraph -->
 									<h3 class="animated fadeInRightBig">{% trans "Find the best reviews" %}</h3>
 									<!-- button -->
@@ -154,7 +120,6 @@
 							</div>
 						</div>
 					</div>
-
 					<!-- Controls -->
 					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 						<span class="fa fa-arrow-left" aria-hidden="true"></span>
@@ -191,22 +156,5 @@
 			
 		</div>
 		
-		<!-- Javascript files -->
-		<!-- jQuery -->
-		<script src="{% static 'js/jquery.js'%}"></script>
-		<!-- Bootstrap JS -->
-		<script src="{% static 'js/bootstrap.min.js'%}"></script>
-		<!-- WayPoints JS -->
-		<script src="{% static 'js/waypoints.min.js'%}"></script>
-		<!-- Include js plugin -->
-		<script src="{% static 'js/owl.carousel.min.js'%}"></script>
-		<!-- One Page Nav -->
-		<script src="{% static 'js/jquery.nav.js'%}"></script>
-		<!-- Respond JS for IE8 -->
-		<script src="{% static 'js/respond.min.js'%}"></script>
-		<!-- HTML5 Support for IE -->
-		<script src="{% static 'js/html5shiv.js'%}"></script>
-		<!-- Custom JS -->
-		<script src="{% static 'js/custom.js'%}"></script>
 	</body>	
 </html>

@@ -2,6 +2,7 @@ from django import forms
 from django.db.models import fields
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from requests.api import request
 from .models import *
 class MyReview(forms.ModelForm):
     def __init__(self, *args, **kwargs):

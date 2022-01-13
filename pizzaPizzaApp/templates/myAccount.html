@@ -1,3 +1,86 @@
-<!--List all the reviews and have the posibility of changing username/password and a logout button-->
 <!--Fix language and add javascript and modify comentaries in code-->
-<!--The username in the reviews has to exist-->
+<!--The username in the reviews has to exist--> 
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block contenido %}
+
+<div id="latestaccount" class="account pad">
+    <div class="container">
+        <div class="account-content ">
+            <h2>MY ACCOUNT</h2>
+            <hr>
+            <h4>Dear <i style="text-transform: capitalize; color: gray;">{{user.username}}</i>, welcome to your account</h4>
+            <div class= "make-commentary">
+                <p><a href="/proyecto/comentario">Make a review</a></strong></p>   
+            </div>
+        </div>
+
+        <div class="account-list">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="figure">
+                        <img class="img-responsive" src="{% static 'img/logos/registro.png'%}" alt="" width="800"/>
+                    </div>
+                </div>
+             <div class="col-md-6 col-sm-6">
+                <div class="reviews">
+                    <section class="content-subhead">
+                        <h1 class="content-subhead">Account information</h1>
+                         <h5> <b style="color: black; text-transform: capitalize;color: blue;">Username:</b> <em style="text-transform: capitalize;color: black;">{{user.username}}</em></h5>
+                         {%if user.username == admin %}
+                            <h5> Email: Admin account does not have an email associated </h5>
+                         {%else%}
+                         <h5> <b style="color: black; text-transform: capitalize;color: blue;">Email:</b> <em style="text-transform: lowercase;color: black;">{{user.email}}</em></h5>
+                         {%endif%}
+                    </section>
+                    <section class="content-subhead"> REVIEWS
+                        {%if comentarios%}
+                            {%for c in comentarios%}
+                                {%if c.username == user.username%}
+                                    {%if pizzas%}
+                                        {%for p in pizzas%}
+                                            {%if p.id == c.pizzaModel.pizzaModel_id%}
+                                                 <section class="review">
+                                                     <header class="review-header">
+                                                        <h4 class="review-title">|<a href="/proyecto/pizzas/{{p.id}}" style= "color:black">{{p.title}}</a></h4>
+                                                    </header>
+                                                    <div class="review-description">
+                                                        <strong style="color: blue;">{% trans "Points" %}</strong>: <strong style="color: black;">{{c.valoracion}}</strong>&nbsp;|&nbsp;
+                                                        <p><strong style="color: blue;">{% trans "Description" %}</strong>:<i style="color: black;">{{c.descripcion}}</i></p> 
+                                                        <img class="img-responsive" src="{{p.image}}" alt="" width="80"/>
+                                                    </div>
+                                                 </section>
+                                            {%else%}
+                                            {%endif%}
+                                        {%endfor%}
+                                    {%else%}
+                                    {%endif%}
+                                {%else%}
+                                <section class="song">
+                                    <header class="song-header">
+                                        <p class="song-title">No reviews made yet. <a href="/proyecto/comentario">Make a review.</a></p>
+                                    </header>
+                                </section>
+                                {%endif%}
+                            {%endfor%}
+                        {%else%}
+                            <section class="song">
+                                <p class="song-title">No reviews made yet. <a href="/proyecto/comentario">Make a review.</a></p>
+                            </section>
+                        {%endif%}
+                    </section>
+                    <section> &nbsp;
+                        <form action="/proyecto/logOut">
+                            <input type="submit" class="logout"  value="Log out" />
+                        </form>
+                    </section>
+                </div>
+			 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,15 +1,12 @@
 {% extends "index.html" %}
 {% load static %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
 {% block contenido %}
 
-<div class="contact pad" id="contact">
+<div class="login pad" id="login">
     <div class="container">
-        <!-- default heading -->
         <div class="default-heading">
-            <!-- heading -->
-            <h2>{% trans "REGISTER" %}</h2>
+            <h2>LOGIN</h2>
         </div>
         <div class="content">
             <form role="form" method="post", id ="registerForm">

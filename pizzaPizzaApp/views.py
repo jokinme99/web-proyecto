@@ -11,8 +11,12 @@ from requests.api import get
 from .forms import *
 from .models import *
 
+apiKey1 = "89b02dca211e450e8c3bc9361f7bbb6e" # If it's used 150 times change of apiKey
+apiKey2 = "27327985a7e74880934012b630350cb5"
+apiKey = apiKey1
+
 def home(request):
-    data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=89b02dca211e450e8c3bc9361f7bbb6e&query=pizza')
+    data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+ apiKey + '&query=pizza')
     variable = data.json()
     pizzas = variable["results"]
     pizzaModel_list = PizzaModel.objects.all()
@@ -36,14 +40,14 @@ def home(request):
     return render(request, "home.html")   
 
 def pizzas(request):
-    data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=89b02dca211e450e8c3bc9361f7bbb6e&query=pizza')
+    data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey + '&query=pizza')
     variable = data.json()
     pizzas = variable["results"]
     context = {"pizzas": pizzas}
     return render(request, "pizzas.html", context)
 
 def detailPizza(request, pizza_id):
-    data = requests.get(url = "https://api.spoonacular.com/recipes/" + str(pizza_id) + "/information?apiKey=89b02dca211e450e8c3bc9361f7bbb6e")
+    data = requests.get(url = "https://api.spoonacular.com/recipes/" + str(pizza_id) + "/information?apiKey=" + apiKey)
     variable = data.json()
     pizza = variable
     comentariosExistingCheck_list = Comentario.objects.all()
@@ -63,7 +67,7 @@ def getList(comentariosList: List[Comentario], pizza_id: int) -> List[Comentario
 	return comentarios
 
 def detailIngrediente(request, ingrediente_id):
-	data = requests.get(url = "https://api.spoonacular.com/food/ingredients/" + str(ingrediente_id) + "/information?amount=1&apiKey=89b02dca211e450e8c3bc9361f7bbb6e")
+	data = requests.get(url = "https://api.spoonacular.com/food/ingredients/" + str(ingrediente_id) + "/information?amount=1&apiKey=" + apiKey)
 	variable = data.json()
 	ingrediente = variable
 	nutrition = variable["nutrition"]
@@ -74,7 +78,7 @@ def contacto(request):
 	return render(request, 'contacto.html')
 
 def comentarios(request):
- data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=89b02dca211e450e8c3bc9361f7bbb6e&query=pizza')
+ data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey + '&query=pizza')
  variable = data.json()
  pizzas = variable["results"]
  comentariosExistingCheck_list = Comentario.objects.all()
@@ -85,7 +89,7 @@ def comentarios(request):
  context = {'comentarios': comentarios, 'pizzas': pizzas}
  return render(request, 'comentarios.html', context)
 
-def comentario(request):#change email to username
+def comentario(request):
  if request.method == "POST":
      form = MyReview(request.POST)
      if form.is_valid():
@@ -132,4 +136,17 @@ def loginUser(request):
 	return render(request, 'login.html', {'form':form})
 
 def myAccount(request):
-    return render(request, 'myAccount.html')
+ data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey + '&query=pizza')
+ variable = data.json()
+ pizzas = variable["results"]
+ comentariosExistingCheck_list = Comentario.objects.all()
+ if comentariosExistingCheck_list.exists() == False:
+    comentarios = []
+ else:
+    comentarios = get_list_or_404(Comentario)
+ context = {'comentarios': comentarios, 'pizzas': pizzas}
+ return render(request, 'myAccount.html', context)
+
+def logOutView(request):
+ logout(request)
+ return render(request, "home.html")
