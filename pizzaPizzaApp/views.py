@@ -13,7 +13,7 @@ from .models import *
 
 apiKey1 = "89b02dca211e450e8c3bc9361f7bbb6e" # If it's used 150 times change of apiKey
 apiKey2 = "27327985a7e74880934012b630350cb5"
-apiKey = apiKey1
+apiKey = apiKey2
 
 def home(request):
     data = requests.get(url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+ apiKey + '&query=pizza')
