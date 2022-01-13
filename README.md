@@ -10,6 +10,7 @@
 
   ## Cosas por hacer:
     * Formulario al crear Review username tiene que ser el username en uso.
+    * Ordenar inicio(home.html)
     * Si te loggeas, creas un comentario y te desloggeas no funciona.
     * Añadir JavaScript y VUE.js
   
