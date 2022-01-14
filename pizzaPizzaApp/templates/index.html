@@ -67,16 +67,16 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="/proyecto">{% trans "Home" %}</a></li>
-								<li><a href="/proyecto/pizzas">{% trans "Pizzas" %}</a></li>
-								<!-- <li><a href="/proyecto/ingredientes">{% trans "Ingredients" %}</a></li> -->
-								<li><a href="/proyecto/comentarios">{% trans "Reviews" %}</a></li>
-								<li><a href="/proyecto/contacto">{% trans "Contact us" %}</a></li>
+								<li><a href="/proyecto">Home</a></li>
+								<li><a href="/proyecto/pizzas">Pizzas</a></li>
+								<!-- <li><a href="/proyecto/ingredientes">Ingredients</a></li> -->
+								<li><a href="/proyecto/comentarios">Reviews</a></li>
+								<li><a href="/proyecto/contacto">Contact us}</a></li>
 								{% if user.is_authenticated%}
 									<li><a href="/proyecto/myAccount">Welcome back, {{user.username}}</a></li>
 									<!--alert appears if you are sure it will take to home and logout-->>
 								{%else%}
-									<li><a href="/proyecto/loginORegistro">{% trans "Identify" %}</a></li>
+									<li><a href="/proyecto/loginORegistro">Identify</a></li>
 								{%endif%}
 									
 							</ul>
@@ -97,11 +97,11 @@
 								<!-- banner caption -->
 								<div class="carousel-caption slide-one">
 									<!-- heading -->
-									<h2 class="animated fadeInLeftBig"><i class="fas fa-pizza-slice"></i>{% trans "Pizzas" %}</h2>
+									<h2 class="animated fadeInLeftBig"><i class="fas fa-pizza-slice"></i>Pizzas</h2>
 									<!-- paragraph -->
-									<h3 class="animated fadeInRightBig">{% trans "Discover the best pizzas" %}</h3>
+									<h3 class="animated fadeInRightBig">Discover the best pizzas</h3>
 									<!-- button -->
-									<a href="/proyecto/pizzas" class="animated fadeIn btn btn-theme">{% trans "Find more" %}</a>
+									<a href="/proyecto/pizzas" class="animated fadeIn btn btn-theme">Find more</a>
 								</div>
 							</div>
 						</div>
@@ -111,11 +111,11 @@
 								<!-- banner caption -->
 								<div class="carousel-caption slide-two">
 									<!-- heading -->
-									<h2 class="animated fadeInLeftBig"><i class="fas fa-"></i>{% trans "Reviews" %}</h2>
+									<h2 class="animated fadeInLeftBig"><i class="fas fa-"></i>Review</h2>
 									<!-- paragraph -->
-									<h3 class="animated fadeInRightBig">{% trans "Find the best reviews" %}</h3>
+									<h3 class="animated fadeInRightBig">Do you want to give us your opinion?</h3>
 									<!-- button -->
-									<a href="/proyecto/comentarios/" class="animated fadeIn btn btn-theme">{% trans "Find more" %}</a>
+									<a href="/proyecto/comentario" class="animated fadeIn btn btn-theme">Make your own review</a>
 								</div>
 							</div>
 						</div>
