@@ -1,36 +1,25 @@
 {% extends "index.html" %}
 {% load static %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
 {% block contenido %}
 {% if ingrediente %}
 {% if nutrition %}
 
-<!-- Hero block area -->
-<div id="allingredients" class="hero pad">
+<div id="allingredients" class="ingredient pad">
 	<div class="container">
-		<!-- hero content -->
-		<div class="hero-content ">
-			<!-- heading -->
+		<div class="ingredient-content ">
 			<h2>{{ingrediente.name}}</h2>
 			<hr>
 		</div>
-		<!-- hero play list -->
-		<div class="hero-playlist">
+		<div class="ingredient list">
 			<div class="row">
-                <!--izquierda-->
 				<div class="col-md-6 col-sm-6">
-					<!-- music album image -->
 					<div class="figure">
-						<!-- image -->
                          <img class="img-responsive" src="{%static 'img/logos/ingredients.jpg'%}" alt=""  width="600"/>
 					</div>
 					<div class="pizza-details">
-						<!-- title -->
 						<h4><span style="text-transform: uppercase;">{{ingrediente.name}}</span></h4>
-						<!-- composed by -->
 						<h5><strong><a style="color: blue">Category: </a></h5>
-						<!-- paragraph -->
                         {%for c in ingrediente.categoryPath%}
 							{%if c%}
 								<p>&nbsp;&nbsp;&nbsp;<i>{{c}}</i></p> <!--fix-->
@@ -41,12 +30,10 @@
 						
 					</div>
 				</div>
-                <!--derecha-->
 				<div class="col-md-6 col-sm-6">
-					<!-- play list -->
 					<div class="nutrients-content">
 					 {% if nutrition %}
-					  <ul class="list-unstyled">
+					  <ul class="list">
                              <li class="nutrients-list">
                                 <h4><u><a style="color: black">NUTRIENTS</a></u></h4>
                                 <div class="nutrients-info"></div>

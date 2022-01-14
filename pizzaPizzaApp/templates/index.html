@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 {% load static %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>PIZZA-PIZZA</title>
 		<!-- Description, Keywords and Author -->
-		<meta name="description" content="Your description">
-		<meta name="keywords" content="Your,Keywords">
-		<meta name="author" content="HimanshuGupta">
+		<meta name="description" content="Web page that provides pizza receipts">
+		<meta name="keywords" content="PZ">
+		<meta name="author" content="Jokin EGia Martin">
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
@@ -25,10 +24,10 @@
 		<!-- Custom CSS -->
 		<link href="{% static 'css/style.css'%}" rel="stylesheet">
 		<link href="{% static 'css/style-color.css'%}" rel="stylesheet">
-		
+
 		{% block js %}{% endblock %}
 
-		<!-- Favicon -->
+
 		<link rel="shortcut icon" href="{% static 'img/logos/proyect.ico'%}">
 	</head>
 	
@@ -46,36 +45,6 @@
 						<div class="sm-left">
 							<strong></strong>&nbsp; <a href="#"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 							<strong>Jokin Egia Martin </strong>&nbsp; 
-						</div>
-						<!-- secondary menu right link area -->
-						<div class="sm-right">
-							<!-- social link -->
-							<div class="sm-social-link">
-								<!--<a class="h-facebook" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-								<a class="h-twitter" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
-								<a class="h-google" href="https://www.google.com/"><i class="fa fa-google-plus"></i></a>
-								<a class="h-linkedin" href="https://es.linkedin.com/"><i class="fa fa-linkedin"></i></a>-->
-								<form action="{% url 'set_language' %}" method="post">
-									{% csrf_token %}
-									<select name="language" style="color: black;">
-										{% get_current_language as LANGUAGE_CODE %}
-										{% get_available_languages as LANGUAGES %}
-										{% get_language_info_list for LANGUAGES as languages %}
-										{% for language in languages %}
-											<option style="color:black;text-align:center;" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>  {#8#}
-												{{ language.name_local }} ({{ language.code }})
-											</option>
-										{% endfor %}
-									</select>
-									<input style="color:black;text-align:center;" type="submit" value="Switch">
-								</form>
-
-								<!--
-								<a class="español" href="{% url 'set_language' %}" value="es"{% if es == LANGUAGE_CODE %} selected{% endif %}><img class="español" src="{% static 'img/inter/spain.png'%}" alt="" width="20"/></a>
-								<a class="ingles" href="{% url 'set_language' %}" value="en"{% if en == LANGUAGE_CODE %} selected{% endif %}><img class="ingles" src="{% static 'img/inter/ingles.png'%}" alt=""  width="20"/></a>
-								<a class="frances" href="{% url 'set_language' %}" value="fr"{% if fr == LANGUAGE_CODE %} selected{% endif %}><img class="frances" src="{% static 'img/inter/frances.png'%}" alt=""  width="20" /></a>
-								-->
-							</div>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -101,11 +70,18 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="/proyecto">{% trans "Home" %}</a></li>
-								<li><a href="/proyecto/pizzas">{% trans "Pizzas" %}</a></li>
-								<!-- <li><a href="/proyecto/ingredientes">{% trans "Ingredients" %}</a></li> -->
-								<li><a href="/proyecto/comentarios">{% trans "Reviews" %}</a></li>
-								<li><a href="/proyecto/contacto">{% trans "Contact us" %}</a></li>
+								<li><a href="/proyecto">Home</a></li>
+								<li><a href="/proyecto/pizzas">Pizzas</a></li>
+								<!-- <li><a href="/proyecto/ingredientes">Ingredients</a></li> -->
+								<li><a href="/proyecto/comentarios">Reviews</a></li>
+								<li><a href="/proyecto/contacto">Contact us</a></li>
+								{% if user.is_authenticated%}
+									<li><a href="/proyecto/myAccount">My account</a></li>
+									<!--alert appears if you are sure it will take to home and logout-->
+								{%else%}
+									<li><a href="/proyecto/loginORegistro">Identify</a></li>
+								{%endif%}
+									
 							</ul>
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
@@ -124,11 +100,11 @@
 								<!-- banner caption -->
 								<div class="carousel-caption slide-one">
 									<!-- heading -->
-									<h2 class="animated fadeInLeftBig"><i class="fa fa-music"></i>{% trans "Pizzas" %}</h2>
+									<h2 class="animated fadeInLeftBig"><i class="fas fa-pizza-slice"></i>Pizzas</h2>
 									<!-- paragraph -->
-									<h3 class="animated fadeInRightBig">{% trans "Discover the best pizzas" %}</h3>
+									<h3 class="animated fadeInRightBig">Discover the best pizzas</h3>
 									<!-- button -->
-									<a href="/proyecto/pizzas" class="animated fadeIn btn btn-theme">{% trans "Find more" %}</a>
+									<a href="/proyecto/pizzas" class="animated fadeIn btn btn-theme">Find more</a>
 								</div>
 							</div>
 						</div>
@@ -138,16 +114,15 @@
 								<!-- banner caption -->
 								<div class="carousel-caption slide-two">
 									<!-- heading -->
-									<h2 class="animated fadeInLeftBig"><i class="fa fa-headphones"></i>{% trans "Reviews" %}</h2>
+									<h2 class="animated fadeInLeftBig"><i class="fas fa-"></i>Review</h2>
 									<!-- paragraph -->
-									<h3 class="animated fadeInRightBig">{% trans "Find the best reviews" %}</h3>
+									<h3 class="animated fadeInRightBig">Do you want to give us your opinion?</h3>
 									<!-- button -->
-									<a href="/proyecto/comentarios/" class="animated fadeIn btn btn-theme">{% trans "Find more" %}</a>
+									<a href="/proyecto/comentario" class="animated fadeIn btn btn-theme">Make your own review</a>
 								</div>
 							</div>
 						</div>
 					</div>
-
 					<!-- Controls -->
 					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 						<span class="fa fa-arrow-left" aria-hidden="true"></span>
@@ -174,7 +149,7 @@
 						<a class="h-twitter" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
 					</div>
 					<!-- copy right -->
-					<p class="copy-right">&copy; copyright 2018, All rights are reserved.</p>
+					<p class="copy-right">&copy; copyright 2022, All rights are reserved.</p>
 				</div>
 			</footer>
 			<!-- footer end -->
@@ -183,8 +158,7 @@
 			<span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span> 
 			
 		</div>
-		
-		<!-- Javascript files -->
+				<!-- Javascript files -->
 		<!-- jQuery -->
 		<script src="{% static 'js/jquery.js'%}"></script>
 		<!-- Bootstrap JS -->

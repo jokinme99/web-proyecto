@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% block contenido %}
+
+<div class="loginORegistro pad" id="identification">
+    <div class="container">
+        <div class="default-heading">
+            <h2>IDENTIFY YOURSELF</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3"></div>
+            <div class="col-md-3 col-sm-3">
+                <div class="contact-item ">
+                    <a href = "/proyecto/registro"><img class="img-responsive"  src="{% static 'img/logos/registro.png'%}" alt="" width="200"/></a>
+                    <span class="register-details">REGISTER</a></span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="contact-item ">
+                    <a href = "/proyecto/login"><img class="img-responsive"  src="{% static 'img/logos/login.jpg'%}" alt="" width="230"/></a>
+                    <span class="login-details">LOGIN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

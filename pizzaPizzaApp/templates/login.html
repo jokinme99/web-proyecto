@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% load static %}
+{% load i18n %}
+{% block contenido %}
+
+<div class="login pad" id="login">
+    <div class="container">
+        <div class="default-heading">
+            <h2>LOGIN</h2>
+        </div>
+        <div class="content">
+            <form role="form" method="post", id ="loginForm">
+                 <form>
+                     {% csrf_token %}
+                     <div class="form-group">
+                         <label for="username">Enter your username: </label>
+                         <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                     </div>
+                     <div class="form-group">
+                        <label for="password">Enter your password: </label>
+                        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                     </div>
+                     <button type="submit" class="save btn btn-default">Sign Up</button><br>
+                     <p>Don't have an account? <a href="/proyecto/registro">Create an account</a> instead.</p>
+                 </form>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

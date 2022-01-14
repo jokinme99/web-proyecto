@@ -1,13 +1,14 @@
+from email.policy import default
 from django import forms
 from django.db.models import fields
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
 class MyReview(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
+    def __init__(self,  *args, **kwargs):
         super(MyReview, self).__init__(*args, **kwargs)
         self.fields['pizzaModel'] = forms.ModelChoiceField(queryset= PizzaModel.objects.all())
-        self.fields['email'] = forms.EmailField()
+        self.fields['username'] = forms.CharField(max_length=50)
         self.fields['descripcion'] = forms.CharField(
             max_length = 2000,
             widget = forms.Textarea()
@@ -15,7 +16,7 @@ class MyReview(forms.ModelForm):
         self.fields['valoracion'] = forms.IntegerField()
     class Meta:
         model = Comentario
-        fields = ('pizzaModel', 'email', 'descripcion', 'valoracion')
+        fields = ('pizzaModel', 'username', 'descripcion', 'valoracion')
 class RegisterUser(UserCreationForm):
     email = forms.EmailField(required = True)
 
@@ -29,4 +30,5 @@ class RegisterUser(UserCreationForm):
         if commit:
             user.save()
             return user
+
 
