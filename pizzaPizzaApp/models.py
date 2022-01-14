@@ -16,7 +16,7 @@ class PizzaModel(models.Model):
 
 class Comentario(models.Model):
     pizzaModel = models.ForeignKey(PizzaModel, on_delete=models.CASCADE)
-    username = CurrentUserField()
+    username = models.CharField(max_length=50, default = "default")
     descripcion = models.CharField(max_length = 2000)
     valoracion = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)]) 
     def __str__(self) -> str:

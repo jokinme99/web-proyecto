@@ -25,6 +25,9 @@
 		<link href="{% static 'css/style.css'%}" rel="stylesheet">
 		<link href="{% static 'css/style-color.css'%}" rel="stylesheet">
 
+		{% block js %}{% endblock %}
+
+
 		<link rel="shortcut icon" href="{% static 'img/logos/proyect.ico'%}">
 	</head>
 	
@@ -71,10 +74,10 @@
 								<li><a href="/proyecto/pizzas">Pizzas</a></li>
 								<!-- <li><a href="/proyecto/ingredientes">Ingredients</a></li> -->
 								<li><a href="/proyecto/comentarios">Reviews</a></li>
-								<li><a href="/proyecto/contacto">Contact us}</a></li>
+								<li><a href="/proyecto/contacto">Contact us</a></li>
 								{% if user.is_authenticated%}
 									<li><a href="/proyecto/myAccount">Welcome back, {{user.username}}</a></li>
-									<!--alert appears if you are sure it will take to home and logout-->>
+									<!--alert appears if you are sure it will take to home and logout-->
 								{%else%}
 									<li><a href="/proyecto/loginORegistro">Identify</a></li>
 								{%endif%}
@@ -155,6 +158,22 @@
 			<span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span> 
 			
 		</div>
-		
+				<!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="{% static 'js/jquery.js'%}"></script>
+		<!-- Bootstrap JS -->
+		<script src="{% static 'js/bootstrap.min.js'%}"></script>
+		<!-- WayPoints JS -->
+		<script src="{% static 'js/waypoints.min.js'%}"></script>
+		<!-- Include js plugin -->
+		<script src="{% static 'js/owl.carousel.min.js'%}"></script>
+		<!-- One Page Nav -->
+		<script src="{% static 'js/jquery.nav.js'%}"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="{% static 'js/respond.min.js'%}"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="{% static 'js/html5shiv.js'%}"></script>
+		<!-- Custom JS -->
+		<script src="{% static 'js/custom.js'%}"></script>
 	</body>	
 </html>

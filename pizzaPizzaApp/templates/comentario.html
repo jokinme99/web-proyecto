@@ -24,14 +24,14 @@
                                         {{form.pizzaModel}}
                                     </div>
                                     <div class="form-group">
-                                        <label for = "username">Username: </label>
-                                        {{form.username}}
-                                        {{user.username}}
-                                    </div>
-                                    <div class="form-group">
                                         <label for="valoracion">Points: </label>
                                         {{form.valoracion}}
                                     </div>
+                                    <div class="form-group" style="visibility: hidden;">
+                                        <label for = "username">Username: </label>
+                                        {{form.username}}
+                                    </div>
+ 
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
@@ -53,4 +53,10 @@
     </div>
 </div>
 
+<script>
+    var username = "{{user.username}}";
+    console.log('User:' + username)
+
+    document.getElementById("id_username").value = username;
+</script>
 {% endblock %}
