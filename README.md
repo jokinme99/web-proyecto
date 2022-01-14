@@ -34,7 +34,7 @@ PIZZAPIZZA WEB APP
   * ***python manage.py migrate:** Para que los cambios realizados en la bd guardados con el anterior comando se hagan efectivos(Si se está en mac python3).*
   * ***python manage.py runserver:** Para poner el servidor en funcionamiento y arrancar la parte backend(Si se está en mac python3).*
 ## 5.- *Como acceder a la parte cliente:*
-  Para acceder a la página web creada deberemos introducir la siguiente dirección en el navegador de nuestro ordenador: **http://127.0.0.1:8000/proyecto/**
-  Si queremos acceder al menú de administración debemos introducir la siguiente dirección: **http://127.0.0.1:8000/admin/** (admin; admin)
+  * Para acceder a la página web creada deberemos introducir la siguiente dirección en el navegador de nuestro ordenador: **http://127.0.0.1:8000/proyecto/**
+  * Si queremos acceder al menú de administración debemos introducir la siguiente dirección: **http://127.0.0.1:8000/admin/** (admin; admin)
 
     
