@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load pwa %}   
+{% progressive_web_app_meta %}
 {% load static %}
 {% load i18n %}
 <html>
@@ -61,7 +63,7 @@
 								<span class="icon-bar"></span>
 							</button>
 							<!-- logo area -->
-							<a class="navbar-brand" href="/proyecto">
+							<a class="navbar-brand" href="">
 								<!-- logo image -->
 								<img class="img-responsive" src="{% static 'img/logos/proyectLogo.png'%}" alt=""/>
 							</a>
@@ -70,16 +72,16 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="/proyecto">Home</a></li>
-								<li><a href="/proyecto/pizzas">Pizzas</a></li>
-								<!-- <li><a href="/proyecto/ingredientes">Ingredients</a></li> -->
-								<li><a href="/proyecto/comentarios">Reviews</a></li>
-								<li><a href="/proyecto/contacto">Contact us</a></li>
+								<li><a href="">Home</a></li>
+								<li><a href="/pizzas">Pizzas</a></li>
+								<!-- <li><a href="/ingredientes">Ingredients</a></li> -->
+								<li><a href="/comentarios">Reviews</a></li>
+								<li><a href="/contacto">Contact us</a></li>
 								{% if user.is_authenticated%}
-									<li><a href="/proyecto/myAccount">My account</a></li>
+									<li><a href="/myAccount">My account</a></li>
 									<!--alert appears if you are sure it will take to home and logout-->
 								{%else%}
-									<li><a href="/proyecto/loginORegistro">Identify</a></li>
+									<li><a href="/loginORegistro">Identify</a></li>
 								{%endif%}
 									
 							</ul>
@@ -104,7 +106,7 @@
 									<!-- paragraph -->
 									<h3 class="animated fadeInRightBig">Discover the best pizzas</h3>
 									<!-- button -->
-									<a href="/proyecto/pizzas" class="animated fadeIn btn btn-theme">Find more</a>
+									<a href="/pizzas" class="animated fadeIn btn btn-theme">Find more</a>
 								</div>
 							</div>
 						</div>
@@ -118,7 +120,7 @@
 									<!-- paragraph -->
 									<h3 class="animated fadeInRightBig">Do you want to give us your opinion?</h3>
 									<!-- button -->
-									<a href="/proyecto/comentario" class="animated fadeIn btn btn-theme">Make your own review</a>
+									<a href="/comentario" class="animated fadeIn btn btn-theme">Make your own review</a>
 								</div>
 							</div>
 						</div>

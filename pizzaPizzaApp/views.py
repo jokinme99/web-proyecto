@@ -19,28 +19,19 @@ apiKey = apiKey2
 
 
 def home(request):
-    data = requests.get(
-        url='https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey + '&query=pizza')
-    variable = data.json()
-    pizzas = variable["results"]
     pizzaModel_list = PizzaModel.objects.all()
     if pizzaModel_list.exists() == False:
+        data = requests.get(
+         url='https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey + '&query=pizza')
+        variable = data.json()
+        pizzas = variable["results"]
         for p in pizzas:
             pizzaModel_data = PizzaModel(
                 pizzaModel_id=p['id'],
                 nombre=p['title']
             )
             pizzaModel_data.save()
-        all_pizzaModel = PizzaModel.objects.all().order_by('id')
-    else:
-        PizzaModel.objects.all().delete()
-        for p in pizzas:
-            pizzaModel_data = PizzaModel(
-                pizzaModel_id=p['id'],
-                nombre=p['title']
-            )
-            pizzaModel_data.save()
-        all_pizzaModel = PizzaModel.objects.all().order_by('id')
+    all_pizzaModel = PizzaModel.objects.all().order_by('id')
     return render(request, "home.html")
 
 
@@ -60,17 +51,16 @@ def detailPizza(request, pizza_id):
     pizza = variable
     comentariosExistingCheck_list = Comentario.objects.all()
     if comentariosExistingCheck_list.exists() == False:
-        comentarios = []
+        context = {'pizza': pizza}
     else:
         comentariosList = get_list_or_404(Comentario)
         comentarios = getList(
             comentariosList=comentariosList, pizza_id=pizza_id)
-    context = {'pizza': pizza, 'comentarios': comentarios}
+        context = {'pizza': pizza, 'comentarios': comentarios}
     return render(request, 'detailPizza.html', context)  # detail
 
 
 def getList(comentariosList: List[Comentario], pizza_id: int) -> List[Comentario]:
-    comentarios = []
     for e in comentariosList:
         if e.pizzaModel.pizzaModel_id == pizza_id:
             comentarios.append(e)
@@ -98,10 +88,10 @@ def comentarios(request):
     pizzas = variable["results"]
     comentariosExistingCheck_list = Comentario.objects.all()
     if comentariosExistingCheck_list.exists() == False:
-        comentarios = []
+        context = {}
     else:
         comentarios = get_list_or_404(Comentario)
-    context = {'comentarios': comentarios, 'pizzas': pizzas}
+        context = {'comentarios': comentarios, 'pizzas': pizzas}
     return render(request, 'comentarios.html', context)
 
 
@@ -158,10 +148,10 @@ def myAccount(request):
     pizzas = variable["results"]
     comentariosExistingCheck_list = Comentario.objects.all()
     if comentariosExistingCheck_list.exists() == False:
-        comentarios = []
+        context={}
     else:
         comentarios = get_list_or_404(Comentario)
-    context = {'comentarios': comentarios, 'pizzas': pizzas}
+        context = {'comentarios': comentarios, 'pizzas': pizzas}
     return render(request, 'myAccount.html', context)
 
 

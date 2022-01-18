@@ -26,7 +26,7 @@
                 <div class="commentary-details">
                     <h4 style="color: black;"> <strong>REVIEWS</strong></h4>
                     <div class= "make-commentary">
-                        <h4><strong><a href="/proyecto/comentario"> Make a review</a></strong></h4>   
+                        <h4><strong><a href="/comentario"> Make a review</a></strong></h4>   
                     </div>
                     {%if comentarios%}
                      {% for c in comentarios%}
@@ -63,7 +63,7 @@
                                             {%if s%}
                                                 <p style="color: black"><strong>Ingredients</strong>:</p>
                                                 {%for ing in s.ingredients%}
-                                                    <a style="color: blue" href="/proyecto/ingredientes/{{ing.id}}">{{ing.name}}<br></a> 
+                                                    <a style="color: blue" href="/ingredientes/{{ing.id}}">{{ing.name}}<br></a> 
                                                 {%endfor%}
                                             {%else%}
                                             <p>No ingredients</p>

@@ -20,7 +20,7 @@ class Comentario(models.Model):
     descripcion = models.CharField(max_length = 2000)
     valoracion = models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(1)]) 
     def __str__(self) -> str:
-        return f"{self.pizzaModel.nombre}:{self.username}"
+        return f"{self.pizzaModel.nombre}: {self.username}"
 
     
 

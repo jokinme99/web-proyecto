@@ -13,7 +13,7 @@
             <hr>
             <h4>Dear <i style="text-transform: capitalize; color: gray;">{{user.username}}</i>, welcome to your account</h4>
             <div class= "make-commentary">
-                <p><a href="/proyecto/comentario">Make a review</a></strong></p>   
+                <p><a href="/comentario">Make a review</a></strong></p>   
             </div>
         </div>
 
@@ -44,11 +44,11 @@
                                             {%if p.id == c.pizzaModel.pizzaModel_id%}
                                                  <section class="review">
                                                      <header class="review-header">
-                                                        <h4 class="review-title">|<a href="/proyecto/pizzas/{{p.id}}" style= "color:black">{{p.title}}</a></h4>
+                                                        <h4 class="review-title">|<a href="/pizzas/{{p.id}}" style= "color:black">{{p.title}}</a></h4>
                                                     </header>
                                                     <div class="review-description">
                                                         <strong style="color: blue;">Points</strong>: <strong style="color: black;">{{c.valoracion}}</strong>&nbsp;|&nbsp;
-                                                        <p><strong style="color: blue;">Description}</strong>:<i style="color: black;">{{c.descripcion}}</i></p> 
+                                                        <p><strong style="color: blue;">Description</strong>:<i style="color: black;">{{c.descripcion}}</i></p> 
                                                         <img class="img-responsive" src="{{p.image}}" alt="" width="80"/>
                                                     </div>
                                                  </section>
@@ -58,21 +58,14 @@
                                     {%else%}
                                     {%endif%}
                                 {%else%}
-                                <section class="song">
-                                    <header class="song-header">
-                                        <p class="song-title">No reviews made yet. <a href="/proyecto/comentario">Make a review.</a></p>
-                                    </header>
-                                </section>
                                 {%endif%}
                             {%endfor%}
                         {%else%}
-                            <section class="song">
-                                <p class="song-title">No reviews made yet. <a href="/proyecto/comentario">Make a review.</a></p>
-                            </section>
                         {%endif%}
+
                     </section>
                     <section> &nbsp;
-                        <form action="/proyecto/logOut">
+                        <form action="/logOut">
                             <input type="submit" class="logout"  value="Log out" />
                         </form>
                     </section>
