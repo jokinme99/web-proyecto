@@ -7,7 +7,7 @@ PIZZAPIZZA WEB APP
 ## 1.- *Software que se necesita para instalar:*
   * [Visual Studio Code](https://code.visualstudio.com/) o cualquier otro editor de Python.
   * [Pip](https://pypi.org/project/pip/) para permitir la instalación de paquetes mediante cmd.
-  * [Python](https://www.python.org/downloads/release/python-391/)==3.9.1.
+  * [Python](https://www.python.org/downloads/release/python-391/) 3.9.1.
   * [MongoDBCompass](https://www.mongodb.com/products/compass) para ver la Base de Datos que hemos creado.
 ## 2.- *Servicios que hay que arrancar:*
   * Abrir VisualStudioCode e importar el proyecto.
@@ -16,11 +16,13 @@ PIZZAPIZZA WEB APP
   * Ejecutar el comando *pip install -r requirements.txt* para instalar las dependencias.
   * No es necesaria la instalación y ejecución de un entorno virtual.
 ## 3.- *Dependencias que hay que instalar:*
+  * git clone [https://github.com/jokinme99/web-proyecto.git](https://github.com/jokinme99/web-proyecto.git)
   * **bson==0.5.8:** Sirve para intercambiar datos con mongoDB(Al instalar djongo versión 1.3.1 se instala de manera automática).
   * **Django==2.2.25:** Framework web que se utiliza.
   * **django-currentuser==0.5.3:** Instala el CurrentUserField() en los modelos.
   * **djongo==1.3.1:** Para mapear los objetos en Python a documentos mongoDB.
   * **pymongo==3.10.1:** Contiene todas las herramientas para trabajar con mongoDB.
+  * **django-pwa==1.0.10:** Para que el proyecto sea una aplicación web progresiva.
   * Si se utiliza un macOs se deberán realizan los siguientes pasos:
      * Instalar **[homebrew](https://brew.sh/index_es):** /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
      * Iniciar mongoDB:
