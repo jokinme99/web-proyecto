@@ -11,12 +11,13 @@ PIZZAPIZZA WEB APP
   * [MongoDBCompass](https://www.mongodb.com/products/compass) para ver la Base de Datos que hemos creado.
 ## 2.- *Servicios que hay que arrancar:*
   * Abrir VisualStudioCode e importar el proyecto.
+  * o escribir lo siguiente en la consola de comandos:*git clone https://github.com/jokinme99/web-proyecto.git*
   * Comprobar que se ha instalado la versión exacta de python.
-  * Asegurarse que se esté a la altura del fichero *mange.py*.
+  * Asegurarse que se esté a la altura del fichero *manage.py*.
   * Ejecutar el comando *pip install -r requirements.txt* para instalar las dependencias.
   * No es necesaria la instalación y ejecución de un entorno virtual.
 ## 3.- *Dependencias que hay que instalar:*
-  * git clone [https://github.com/jokinme99/web-proyecto.git](https://github.com/jokinme99/web-proyecto.git)
+
   * **bson==0.5.8:** Sirve para intercambiar datos con mongoDB(Al instalar djongo versión 1.3.1 se instala de manera automática).
   * **Django==2.2.25:** Framework web que se utiliza.
   * **django-currentuser==0.5.3:** Instala el CurrentUserField() en los modelos.
